@@ -1,7 +1,98 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap');
-
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap");
 * {
-	margin: 0;
-	padding: 0;
-	font-family: 'Montserrat', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.wrapper {
+  height: 100%;
+
+  display: grid;
+  grid-gap: 50px;
+  grid-template-rows: 200px 40vh;
+  grid-template-columns: 1.5fr 1fr;
+}
+
+.wrapper .title {
+  background-image: url(http://ddragon.leagueoflegends.com/cdn/img/champion/splash/LeeSin_0.jpg);
+  /* Opacidad 60% */
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  grid-column: span 2;
+  box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+}
+
+.wrapper .title .difuminado {
+  border-radius: 15px;
+  width: auto;
+  height: 200px;
+  background: rgba(0, 0, 0, 0.459);
+  color: white;
+}
+
+.wrapper .title .difuminado .contenido {
+  padding-top: 50px;
+  padding-left: 50px;
+}
+
+.wrapper .title .difuminado .contenido h2 {
+  font-size: 60px;
+}
+
+.wrapper .title .difuminado .contenido p {
+  font-size: 20px;
+}
+
+.wrapper .skills {
+  /* background: #eeeeee; */
+  padding: 20px;
+  border-top: 1px rgba(0, 0, 0, 0.5) solid;
+}
+
+.wrapper .skills h2 {
+  margin-top: 4vh;
+  margin-bottom: 2vh;
+}
+
+.wrapper .skills p {
+  text-align: justify;
+  bottom: 0px;
+  font-weight: 500;
+}
+
+.wrapper .skills img {
+  border-radius: 10px;
+}
+
+.wrapper .skills .imgs {
+  margin-top: 9%;
+  /* display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrapper .skills .imgs .p {
+}
+
+.wrapper .video {
+  border-radius: 10px;
+  padding: 0;
+  margin: 0;
+}
+.wrapper .video video {
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 1920px) {
+  .wrapper .skills .imgs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+  }
 }
