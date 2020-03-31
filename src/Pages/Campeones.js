@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../css/campeones.css";
+import Navbar from "../components/Navbar";
 
 const Campeones = props => {
   // const id = props.id;
@@ -55,7 +56,8 @@ const Campeones = props => {
   };
 
   return (
-    <div>
+    <div className="contenedor-princial">
+      <Navbar />
       {data ? (
         <div className="wrapper">
           <div className="title">
