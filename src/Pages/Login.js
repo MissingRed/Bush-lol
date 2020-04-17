@@ -10,7 +10,7 @@ const Login = () => {
 				</Link>
 				<form>
 					<h1>Iniciar sesión</h1>
-					<input placeholder="Correo" type="email" name="" id="" />
+					<input placeholder="Correo electrónico" type="email" name="" id="" />
 					<input placeholder="Contraseña" type="password" name="" id="" />
 					<input type="submit" value="iniciar sesión" />
 				</form>
