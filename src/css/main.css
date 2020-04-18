@@ -30,7 +30,7 @@ a {
 	text-decoration: none;
 }
 
-/* hay que tener encuenta estas medidas para en containe-principal */
+/* hay que tener encuenta estas medidas para en container-principal */
 nav {
 	display: flex;
 	align-items: center;
@@ -42,8 +42,6 @@ nav {
 	height: 40px;
 	padding: 40px 60px;
 	background: rgba(255, 255, 255);
-	/* -webkit-backdrop-filter: saturate(180%) blur(20px);
-	backdrop-filter: saturate(180%) blur(20px); */
 	z-index: 50;
 }
 
@@ -59,7 +57,7 @@ nav a {
 
 .nav-container {
 	display: flex;
-	width: 55%;
+	width: 70%;
 	align-items: center;
 	justify-content: space-between;
 }
@@ -144,6 +142,11 @@ nav a {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
+	transition: all 0.5s;
+}
+
+.list-item:hover {
+	box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.65);
 }
 
 .list-item h2 {
@@ -232,10 +235,10 @@ nav a {
 	font-size: 1.2em;
 	outline: none;
 	cursor: pointer;
-	transition: all 0.2s;
+	transition: all 0.5s;
 }
 .login-register form input[type='submit']:hover {
-	font-size: 1.3em;
+	box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.25);
 }
 
 .login-register form h1 {
@@ -264,8 +267,8 @@ img.error {
 .profile-nav {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	width: 85px;
+	justify-content: center;
+	min-width: 150px;
 	padding: 5px 10px;
 	border-radius: 25px;
 	cursor: pointer;
@@ -273,6 +276,107 @@ img.error {
 	transition: all 0.5s;
 }
 
+.profile-nav img {
+	margin-left: 15px;
+}
+
 .profile-nav:hover {
 	background: rgb(233, 233, 233);
+}
+
+.selectedNav {
+	font-weight: 600;
+}
+
+.welcome-container {
+	width: 100%;
+	height: calc(100vh - 120px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.welcome-btn {
+	background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+	color: white;
+	font-weight: bold;
+	width: 200px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 25px;
+	margin-top: 20px;
+	transition: all 0.5s;
+}
+
+.welcome-btn:hover {
+	box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.25);
+}
+.register-btn {
+	background: linear-gradient(90deg, #00d2ff 0%, #3a7bd5 100%);
+	color: white;
+	font-weight: bold;
+	width: 150px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 25px;
+	transition: all 0.5s;
+}
+
+.register-btn:hover {
+	box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+.text-welcome {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 50px;
+}
+
+.jinx-welcome {
+	position: fixed;
+	width: 600px;
+	left: -80px;
+	bottom: -200px;
+}
+.yasuo-welcome {
+	position: fixed;
+	width: 600px;
+	right: -110px;
+	bottom: -150px;
+}
+
+.lr-container {
+	width: 270px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.color-purple {
+	color: #9733ee;
+	font-weight: bold;
+}
+
+.container-loader {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.loader {
+	height: 40px;
+	width: 40px;
+	padding: 1em;
+}
+
+svg path,
+svg rect {
+	fill: #9733ee;
 }

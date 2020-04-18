@@ -148,7 +148,7 @@ const Lista = () => {
 				</div>
 				<div className="list">
 					<div className="container-error">
-						<span>{`No se encontró el campeón ${textoBusqueda}`}</span>
+						<span>{`No se encontró el campeón: ${textoBusqueda}`}</span>
 					</div>
 				</div>
 			</div>
