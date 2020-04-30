@@ -1,11 +1,10 @@
 import React from 'react'
-import '../css/index.css'
 
 const Home = () => {
 	return (
-		<React.Fragment>
-			<h1>Home</h1>
-		</React.Fragment>
+		<div className="contenedor-princial">
+			<h1>Landing Page</h1>
+		</div>
 	)
 }
 

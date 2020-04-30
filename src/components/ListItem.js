@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react'
 
-const ListItem = props => {
+const ListItem = (props) => {
 	const id = props.id
 
 	useEffect(() => {
 		const item = document.querySelector(`#${id}`)
 		item.style.backgroundImage = `url("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg")`
-		return () => {}
 	}, [])
 
 	return (
@@ -15,7 +14,7 @@ const ListItem = props => {
 				<h2>{props.name}</h2>
 				<p>{props.title}</p>
 			</div>
-			<img loading="lazy" src="/img/star.svg" alt="" />
+			<img src="/img/star.svg" alt="" />
 			<div className="color-item"></div>
 		</div>
 	)
