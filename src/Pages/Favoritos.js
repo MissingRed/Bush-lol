@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 const Favoritos = () => {
 	return (
 		<div className="contenedor-princial">
-			<Navbar />
+			{/* <Navbar /> */}
 			<h1>Favoritos</h1>
 		</div>
 	)

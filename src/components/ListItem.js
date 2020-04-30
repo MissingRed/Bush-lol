@@ -6,7 +6,6 @@ const ListItem = (props) => {
 	useEffect(() => {
 		const item = document.querySelector(`#${id}`)
 		item.style.backgroundImage = `url("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg")`
-		return () => {}
 	}, [])
 
 	return (

@@ -21,7 +21,7 @@ const Bienvenida = () => {
 
 	return (
 		<div className="contenedor-princial">
-			<Navbar />
+			{/* <Navbar /> */}
 			<div className="welcome-container">
 				<div className="text-welcome">
 					<h1>{`Hola ${name}`}</h1>

@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 const NotFound = () => {
 	return (
 		<div className="contenedor-princial">
-			<Navbar />
+			{/* <Navbar /> */}
 			<h1>404</h1>
 		</div>
 	)

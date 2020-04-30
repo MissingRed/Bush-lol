@@ -3,7 +3,7 @@ import axios from 'axios'
 import '../css/campeones.css'
 import Navbar from '../components/Navbar'
 
-const Campeones = props => {
+const Campeones = (props) => {
 	const idCampeon = props.match.params.campeon
 	const [data, setData] = useState('')
 	const [loading, setLoading] = useState('')
@@ -22,12 +22,12 @@ const Campeones = props => {
 		try {
 			await axios
 				.get('https://ddragon.leagueoflegends.com/api/versions.json')
-				.then(res => {
+				.then((res) => {
 					axios
 						.get(
 							`http://ddragon.leagueoflegends.com/cdn/${res.data[0]}/data/es_MX/champion/${idCampeon}.json`
 						)
-						.then(res => {
+						.then((res) => {
 							setData(Object.values(res.data.data)[0])
 							console.log(Object.values(res.data.data)[0])
 							const item = document.querySelector(`#${idCampeon}`).children[1]
@@ -37,7 +37,7 @@ const Campeones = props => {
 							setHabilidadActual([
 								'P',
 								Object.values(res.data.data)[0].passive.name,
-								Object.values(res.data.data)[0].passive.description
+								Object.values(res.data.data)[0].passive.description,
 							])
 						})
 				})
@@ -69,7 +69,7 @@ const Campeones = props => {
 			setHabilidadActual([
 				key,
 				data.spells[hab].name,
-				data.spells[hab].description
+				data.spells[hab].description,
 			])
 		}
 	}

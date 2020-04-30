@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Navbar from '../components/Navbar'
 import ListItem from '../components/ListItem'
 import Loading from '../components/Loading'
 import Error from '../components/Error'
@@ -58,7 +57,7 @@ const Lista = () => {
 	if (loading) {
 		return (
 			<div className="contenedor-princial">
-				<Navbar />
+				{/* <Navbar /> */}
 				<div className="list-title">
 					<h1>Lista de campeones</h1>
 					<div className="input-list-container">
@@ -80,7 +79,7 @@ const Lista = () => {
 	if (error) {
 		return (
 			<div className="contenedor-princial">
-				<Navbar />
+				{/* <Navbar /> */}
 				<div className="list-title">
 					<h1>Lista de campeones</h1>
 					<div className="input-list-container">
@@ -102,7 +101,7 @@ const Lista = () => {
 	if (!textoBusqueda) {
 		return (
 			<div className="contenedor-princial">
-				<Navbar />
+				{/* <Navbar /> */}
 				<div className="list-title">
 					<h1>Lista de campeones</h1>
 					<div className="input-list-container">
@@ -134,7 +133,7 @@ const Lista = () => {
 	if (!searchResult.length) {
 		return (
 			<div className="contenedor-princial">
-				<Navbar />
+				{/* <Navbar /> */}
 				<div className="list-title">
 					<h1>Lista de campeones</h1>
 					<div className="input-list-container">
@@ -156,7 +155,7 @@ const Lista = () => {
 	}
 	return (
 		<div className="contenedor-princial">
-			<Navbar />
+			{/* <Navbar /> */}
 			<div className="list-title">
 				<h1>Lista de campeones</h1>
 				<div className="input-list-container">

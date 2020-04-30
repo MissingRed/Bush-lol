@@ -4,7 +4,7 @@ import Navbar from '../components/Navbar'
 const Builds = () => {
 	return (
 		<div className="contenedor-princial">
-			<Navbar />
+			{/* <Navbar /> */}
 			<h1>Builds</h1>
 		</div>
 	)
