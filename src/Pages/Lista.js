@@ -14,7 +14,6 @@ const Lista = () => {
 
 	useEffect(() => {
 		fetchData()
-		return () => {}
 	}, [])
 
 	const fetchData = async () => {

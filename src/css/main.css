@@ -120,6 +120,10 @@ nav a {
 	position: absolute;
 	margin: 0 20px;
 }
+.input-hero img {
+	position: absolute;
+	margin: 0 20px;
+}
 
 .list {
 	display: flex;
@@ -445,4 +449,223 @@ img.error {
 svg path,
 svg rect {
 	fill: #9733ee;
+}
+
+.modal-back {
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	background: rgba(255, 255, 255, 0.8);
+	-webkit-backdrop-filter: saturate(180%) blur(5px);
+	backdrop-filter: saturate(180%) blur(5px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-idiomas {
+	width: calc(70vw - 40px);
+	height: calc(70vh - 40px);
+	color: white;
+	padding: 40px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: rgba(0, 0, 0, 0.8);
+	-webkit-backdrop-filter: saturate(180%) blur(5px);
+	backdrop-filter: saturate(180%) blur(5px);
+	border-radius: 10px;
+}
+
+.idiomas-container {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 100%;
+}
+
+.modal-idiomas-title {
+	width: 100%;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.modal-idiomas-title img {
+	cursor: pointer;
+}
+
+.idiomas-container li {
+	list-style: none;
+	margin: 20px 0;
+	cursor: pointer;
+}
+
+/* The container */
+.container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 25px;
+	width: 25px;
+	background-color: #eee;
+	border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+	background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+	background-color: #9733ee;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+	content: '';
+	position: absolute;
+	display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+	display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.hero {
+	width: 100%;
+	display: flex;
+	height: 80vh;
+}
+
+.hero-text {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: #323232;
+	text-align: center;
+}
+
+.hero-img {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hero-img img {
+	width: 80%;
+}
+
+.hero input {
+	height: 60px;
+	width: 100%;
+	border-radius: 50px;
+	border: none;
+	background: #eaeaea;
+	padding-left: 60px;
+	font-size: 1.5em;
+	outline: none;
+}
+
+.hero-line {
+	width: 80%;
+	margin-top: 30px;
+}
+
+.input-hero {
+	position: relative;
+	width: 70%;
+	display: flex;
+	align-items: center;
+	margin-top: 20px;
+}
+
+.hero-btn-one {
+	background: linear-gradient(90deg, #11998e 0%, #38ef7d 100%);
+}
+.hero-btn-two {
+	background: linear-gradient(90deg, #4776e6 0%, #8e54e9 100%);
+}
+
+footer {
+	height: 50vh;
+	width: 100%;
+	background: #323232;
+	bottom: 0;
+	margin-top: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.conatiner-footer {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: white;
+}
+
+.conatiner-footer span {
+	margin-top: 40px;
+}
+
+.img-redes {
+	margin-top: 30px;
+}
+
+.conatiner-footer img {
+	width: 30%;
+}
+
+.footer-images {
+	display: flex;
+	justify-content: space-between;
+	width: 20%;
+	margin-top: 40px;
+}
+.footer-images img {
+	width: 30%;
 }
