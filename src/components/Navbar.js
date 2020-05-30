@@ -25,7 +25,6 @@ const Navbar = (props) => {
 			'https://ddragon.leagueoflegends.com/cdn/languages.json'
 		)
 		const data = await response.data
-		console.log(data)
 	}
 
 	const LogOut = () => {

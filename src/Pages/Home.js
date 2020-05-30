@@ -1,12 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 const Home = () => {
 	return (
 		<div>
 			<div className="contenedor-princial">
 				<div className="hero">
-					<div className="hero-text">
+					<motion.div
+						initial={{ opacity: 0, x: 100, y: 100 }}
+						animate={{ opacity: 1, x: 0, y: 0 }}
+						transition={{ duration: 1 }}
+						className="hero-text"
+					>
 						<h1>
 							Aprende las habilidades de tus campeones favoritos <br /> ¡Empieza
 							a buscar ya!
@@ -16,10 +22,15 @@ const Home = () => {
 							<input placeholder="Buscar campeones" type="text" />
 						</div>
 						<img className="hero-line" src="/img/line.png" alt="" />
-					</div>
-					<div className="hero-img">
+					</motion.div>
+					<motion.div
+						initial={{ opacity: 0, x: -100, y: -100 }}
+						animate={{ opacity: 1, x: 0, y: 0 }}
+						transition={{ duration: 1 }}
+						className="hero-img"
+					>
 						<img src="/img/akali.png" alt="Hero" />
-					</div>
+					</motion.div>
 				</div>
 				<div className="hero">
 					<div className="hero-img">
@@ -27,10 +38,9 @@ const Home = () => {
 					</div>
 					<div className="hero-text">
 						<h1>
-							Aprende las habilidades de tus campeones favoritos <br /> ¡Empieza
-							a buscar ya!
+							Crea Builds personalizadas <br /> para tus campeones
 						</h1>
-						<Link to="/champions">
+						<Link to="/builds">
 							<div className="welcome-btn hero-btn-one">Explorar</div>
 						</Link>
 						<img className="hero-line" src="/img/line.png" alt="" />
@@ -39,10 +49,9 @@ const Home = () => {
 				<div className="hero">
 					<div className="hero-text">
 						<h1>
-							Aprende las habilidades de tus campeones favoritos <br /> ¡Empieza
-							a buscar ya!
+							Crea un lista de tus <br /> campeones favoritos
 						</h1>
-						<Link to="/champions">
+						<Link to="/favorites">
 							<div className="welcome-btn hero-btn-two">Explorar</div>
 						</Link>
 						<img className="hero-line" src="/img/line.png" alt="" />

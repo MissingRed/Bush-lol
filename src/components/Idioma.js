@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 const Idioma = (props) => {
 	const Idiomas = [

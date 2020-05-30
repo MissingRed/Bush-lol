@@ -3,7 +3,7 @@ import ListItem from '../components/ListItem'
 import Loading from '../components/Loading'
 import Error from '../components/Error'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import jwt_decode from 'jwt-decode'
 
 const Lista = () => {
 	const [data, setData] = useState([])
@@ -11,10 +11,27 @@ const Lista = () => {
 	const [error, setError] = useState('')
 	const [textoBusqueda, setTextoBusqueda] = useState('')
 	const [searchResult, setSearchResult] = useState([])
+	const [favoritos, setFavoritos] = useState([])
+	const [email, setEmail] = useState('')
 
 	useEffect(() => {
 		fetchData()
+		TraerFavoritos()
 	}, [])
+
+	const TraerFavoritos = async () => {
+		let email = ''
+		if (localStorage.usertoken) {
+			const token = localStorage.usertoken
+			const decoded = jwt_decode(token)
+			email = decoded.email
+			setEmail(email)
+			const response = await axios.get(`users/favoritos/${email}`)
+			const Data = await response.data.favoritos
+			console.log(Data)
+			setFavoritos(Data)
+		}
+	}
 
 	const fetchData = async () => {
 		setLoading(true)
@@ -56,7 +73,6 @@ const Lista = () => {
 	if (loading) {
 		return (
 			<div className="contenedor-princial">
-				{/* <Navbar /> */}
 				<div className="list-title">
 					<h1>Lista de campeones</h1>
 					<div className="input-list-container">
@@ -78,7 +94,6 @@ const Lista = () => {
 	if (error) {
 		return (
 			<div className="contenedor-princial">
-				{/* <Navbar /> */}
 				<div className="list-title">
 					<h1>Lista de campeones</h1>
 					<div className="input-list-container">
@@ -100,7 +115,6 @@ const Lista = () => {
 	if (!textoBusqueda) {
 		return (
 			<div className="contenedor-princial">
-				{/* <Navbar /> */}
 				<div className="list-title">
 					<h1>Lista de campeones</h1>
 					<div className="input-list-container">
@@ -114,15 +128,19 @@ const Lista = () => {
 				</div>
 				<div className="list">
 					{data.map((campeon) => {
+						const buscarFavorito = favoritos.find(
+							(element) => element === campeon.id
+						)
+
 						return (
-							<Link key={campeon.id} to={`/champions/${campeon.id}`}>
-								<ListItem
-									key={campeon.id}
-									id={campeon.id}
-									name={campeon.name}
-									title={campeon.title}
-								/>
-							</Link>
+							<ListItem
+								key={campeon.id}
+								id={campeon.id}
+								name={campeon.name}
+								title={campeon.title}
+								EsFavorito={buscarFavorito ? true : false}
+								email={email}
+							/>
 						)
 					})}
 				</div>
@@ -168,15 +186,19 @@ const Lista = () => {
 			</div>
 			<div className="list">
 				{searchResult.map((campeon) => {
+					const buscarFavorito = favoritos.find(
+						(element) => element === campeon.id
+					)
+
 					return (
-						<Link key={campeon.id} to={`/champions/${campeon.id}`}>
-							<ListItem
-								key={campeon.id}
-								id={campeon.id}
-								name={campeon.name}
-								title={campeon.title}
-							/>
-						</Link>
+						<ListItem
+							key={campeon.id}
+							id={campeon.id}
+							name={campeon.name}
+							title={campeon.title}
+							EsFavorito={buscarFavorito ? true : false}
+							email={email}
+						/>
 					)
 				})}
 			</div>

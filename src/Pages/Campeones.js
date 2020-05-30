@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import '../css/campeones.css'
 import Navbar from '../components/Navbar'
+import { motion } from 'framer-motion'
 
 const Campeones = (props) => {
 	const idCampeon = props.match.params.campeon
@@ -9,6 +10,7 @@ const Campeones = (props) => {
 	const [loading, setLoading] = useState('')
 	const [error, setError] = useState('')
 	const [habilidadActual, setHabilidadActual] = useState('')
+	const [IdVideo, setIdVideo] = useState('')
 
 	useEffect(() => {
 		fetchData()
@@ -39,6 +41,7 @@ const Campeones = (props) => {
 								Object.values(res.data.data)[0].passive.name,
 								Object.values(res.data.data)[0].passive.description,
 							])
+							setIdVideo(Object.values(res.data.data)[0].key.padStart(4, '0'))
 						})
 				})
 
@@ -92,7 +95,9 @@ const Campeones = (props) => {
 
 						<p>{habilidadActual[2]}</p>
 						<div className="imgs">
-							<img
+							<motion.img
+								whileHover={{ scale: 1.1 }}
+								whileTap={{ scale: 0.9 }}
 								src={`http://ddragon.leagueoflegends.com/cdn/10.4.1/img/passive/${data.passive.image.full}`}
 								alt="Pasiva"
 								onClick={() => {
@@ -100,28 +105,36 @@ const Campeones = (props) => {
 								}}
 							/>
 
-							<img
+							<motion.img
+								whileHover={{ scale: 1.1 }}
+								whileTap={{ scale: 0.9 }}
 								src={`http://ddragon.leagueoflegends.com/cdn/10.4.1/img/spell/${data.spells[0].image.full}`}
 								alt="Q"
 								onClick={() => {
 									cambiarHabilidad('Q', 0)
 								}}
 							/>
-							<img
+							<motion.img
+								whileHover={{ scale: 1.1 }}
+								whileTap={{ scale: 0.9 }}
 								src={`http://ddragon.leagueoflegends.com/cdn/10.4.1/img/spell/${data.spells[1].image.full}`}
 								alt="W"
 								onClick={() => {
 									cambiarHabilidad('W', 1)
 								}}
 							/>
-							<img
+							<motion.img
+								whileHover={{ scale: 1.1 }}
+								whileTap={{ scale: 0.9 }}
 								src={`http://ddragon.leagueoflegends.com/cdn/10.4.1/img/spell/${data.spells[2].image.full}`}
 								alt="E"
 								onClick={() => {
 									cambiarHabilidad('E', 2)
 								}}
 							/>
-							<img
+							<motion.img
+								whileHover={{ scale: 1.1 }}
+								whileTap={{ scale: 0.9 }}
 								src={`http://ddragon.leagueoflegends.com/cdn/10.4.1/img/spell/${data.spells[3].image.full}`}
 								alt="R"
 								onClick={() => {
@@ -131,7 +144,12 @@ const Campeones = (props) => {
 						</div>
 					</div>
 					<div className="video">
-						<video src="https://d28xe8vt774jo5.cloudfront.net/champion-abilities/0064/ability_0064_R1.webm"></video>
+						<video
+							autoPlay
+							loop
+							muted
+							src={`https://d28xe8vt774jo5.cloudfront.net/champion-abilities/${IdVideo}/ability_${IdVideo}_${habilidadActual[0]}1.webm`}
+						></video>
 					</div>
 				</div>
 			) : (

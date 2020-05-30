@@ -11,17 +11,17 @@
 	color: white;
 }
 
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
 	width: 10px;
 	margin-right: 15px;
 	background: transparent;
 }
 
-::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
 	background: white;
 }
 
-::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
 	background: linear-gradient(180deg, #da22ff 0%, #9733ee 100%);
 	border-radius: 5px;
 }
@@ -146,7 +146,7 @@ nav a {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
-	transition: all 0.5s;
+	transition: all 0.2s;
 }
 
 .list-item:hover {
@@ -356,6 +356,7 @@ img.error {
 
 .selectedNav {
 	font-weight: 600;
+	color: #9733ee;
 }
 
 .welcome-container {
@@ -414,6 +415,9 @@ img.error {
 	left: -80px;
 	bottom: -200px;
 }
+.jinx-welcome.mensaje {
+	bottom: -120px;
+}
 .yasuo-welcome {
 	position: fixed;
 	width: 600px;
@@ -463,9 +467,11 @@ svg rect {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 50;
 }
 
 .modal-idiomas {
+	z-index: 60;
 	width: calc(70vw - 40px);
 	height: calc(70vh - 40px);
 	color: white;
@@ -668,4 +674,45 @@ footer {
 }
 .footer-images img {
 	width: 30%;
+}
+
+.item-container {
+	position: relative;
+}
+
+.start-item {
+	position: absolute;
+	right: 30px;
+	bottom: 70px;
+	z-index: 20;
+	cursor: pointer;
+}
+
+.login-mensaje {
+	width: 100%;
+	height: 80vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.foto-perfil-favoritos {
+	height: 80px;
+	border-radius: 50%;
+	margin-right: 40px;
+}
+
+.perfil-favoritos {
+	display: flex;
+}
+
+.title-favorites {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding: 40px 0;
+}
+
+.title-favorites h1 {
+	font-size: 4em;
 }
