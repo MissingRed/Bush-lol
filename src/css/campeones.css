@@ -61,6 +61,7 @@
 	text-align: justify;
 	bottom: 0px;
 	font-weight: 500;
+	height: 40px;
 }
 
 .wrapper .skills img {
@@ -82,13 +83,15 @@
 }
 
 .wrapper .video {
-	border-radius: 10px;
 	padding: 0;
 	margin: 0;
+	display: flex;
+	justify-content: flex-end;
 }
 .wrapper .video video {
-	width: 100%;
+	width: 80%;
 	height: 100%;
+	border-radius: 15px;
 }
 @media (min-width: 1920px) {
 	.wrapper .skills .imgs {

@@ -1,10 +1,16 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
+import LoginMensaje from '../components/LoginMensaje'
 
 const Builds = () => {
+	if (!localStorage.usertoken) {
+		return (
+			<div className="contenedor-princial">
+				<LoginMensaje title="Builds" />
+			</div>
+		)
+	}
 	return (
 		<div className="contenedor-princial">
-			{/* <Navbar /> */}
 			<h1>Builds</h1>
 		</div>
 	)

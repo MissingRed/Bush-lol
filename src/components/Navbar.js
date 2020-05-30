@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Link, NavLink, Redirect } from 'react-router-dom'
 import jwt_decode from 'jwt-decode'
+import Idioma from './Idioma'
+import axios from 'axios'
 
 const Navbar = (props) => {
 	const [name, setName] = useState('')
 	const [openMenu, setOpenMenu] = useState(false)
 	const [cerrarSesion, setcerrarSesion] = useState(false)
+	const [toggleModal, setToggleModal] = useState(false)
 
 	useEffect(() => {
 		if (localStorage.usertoken) {
@@ -13,8 +16,16 @@ const Navbar = (props) => {
 			const decoded = jwt_decode(token)
 			setName(decoded.username)
 		}
+		traerIdiomas()
 		return () => {}
 	}, [])
+
+	const traerIdiomas = async () => {
+		const response = await axios.get(
+			'https://ddragon.leagueoflegends.com/cdn/languages.json'
+		)
+		const data = await response.data
+	}
 
 	const LogOut = () => {
 		localStorage.removeItem('usertoken')
@@ -27,6 +38,7 @@ const Navbar = (props) => {
 
 	return (
 		<nav>
+			{toggleModal ? <Idioma close={() => setToggleModal(false)} /> : null}
 			<Link to="/">
 				<img className="logo" src="/img/logo.png" alt="Logo" />
 			</Link>
@@ -41,7 +53,12 @@ const Navbar = (props) => {
 					Builds
 				</NavLink>
 				<img className="search-icon" src="/img/search.svg" alt="search" />
-				<img className="idioma-icon" src="/img/idioma.svg" alt="idioma" />
+				<img
+					onClick={() => setToggleModal(true)}
+					className="idioma-icon"
+					src="/img/idioma.svg"
+					alt="idioma"
+				/>
 				{!localStorage.usertoken ? (
 					<div className="lr-container">
 						<Link to="/login">Iniciar sesión</Link>
