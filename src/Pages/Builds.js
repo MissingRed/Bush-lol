@@ -1,11 +1,19 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import ItemsComponent from "../components/ItemsComponent";
+import LoginMensaje from '../components/LoginMensaje'
 
 const Builds = () => {
-  return (
-    <div className="contenedor-princial">
-      {/* <Navbar /> */}
+  if (!localStorage.usertoken) {
+		return (
+			<div className="contenedor-princial">
+				<LoginMensaje title="Builds" />
+			</div>
+		)
+	}
+	return (
+		<div className="contenedor-princial">
+			{/* <Navbar /> */}
       <div className="cabecera">
         <h1>Builds</h1>
         <input type="search" name="Buscar" placeholder="Buscar Campeones" />
@@ -24,8 +32,8 @@ const Builds = () => {
         <ItemsComponent></ItemsComponent>
         <ItemsComponent></ItemsComponent>
       </div>
-    </div>
-  );
+		</div>
+	)
 };
 
 export default Builds;
