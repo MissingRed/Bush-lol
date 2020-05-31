@@ -53,22 +53,155 @@ const Lista = () => {
 						})
 				})
 
-			setLoading(false)
-		} catch (error) {
-			setError(error)
-		}
-	}
 
-	const handleChange = (e) => {
-		const texto = e.target.value
-		setTextoBusqueda(texto)
+      setLoading(false);
+    } catch (error) {
+      setError(error);
+    }
+  };
 
-		const search = data.filter((campeon) => {
-			return `${campeon.name}`.toLowerCase().includes(texto.toLowerCase())
-		})
+  const handleChange = (e) => {
+    const texto = e.target.value;
+    setTextoBusqueda(texto);
 
-		setSearchResult(search)
-	}
+    const search = data.filter((campeon) => {
+      return `${campeon.name}`.toLowerCase().includes(texto.toLowerCase());
+    });
+
+    setSearchResult(search);
+  };
+
+
+  if (loading) {
+    return (
+      <div className="contenedor-princial">
+        {/* <Navbar /> */}
+        <div className="list-title">
+          <h1>Lista de campeones</h1>
+          <div className="input-list-container">
+            <img className="search-icon" src="/img/search.svg" alt="search" />
+            <input
+              placeholder="Buscar campeones"
+              onChange={handleChange}
+              type="text"
+            />
+          </div>
+        </div>
+        <div className="list">
+          <Loading />
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="contenedor-princial">
+        {/* <Navbar /> */}
+        <div className="list-title">
+          <h1>Lista de campeones</h1>
+          <div className="input-list-container">
+            <img className="search-icon" src="/img/search.svg" alt="search" />
+            <input
+              placeholder="Buscar campeones"
+              onChange={handleChange}
+              type="text"
+            />
+          </div>
+        </div>
+        <div className="list">
+          <Error />
+        </div>
+      </div>
+    );
+  }
+
+  if (!textoBusqueda) {
+    return (
+      <div className="contenedor-princial">
+        {/* <Navbar /> */}
+        <div className="list-title">
+          <h1>Lista de campeones</h1>
+          <div className="input-list-container">
+            <img className="search-icon" src="/img/search.svg" alt="search" />
+            <input
+              placeholder="Buscar campeones"
+              onChange={handleChange}
+              type="text"
+            />
+          </div>
+        </div>
+        <div className="list">
+          {data.map((campeon) => {
+            return (
+              <Link key={campeon.id} to={`/champions/${campeon.id}`}>
+                <ListItem
+                  key={campeon.id}
+                  id={campeon.id}
+                  name={campeon.name}
+                  title={campeon.title}
+                />
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    );
+  }
+  if (!searchResult.length) {
+    return (
+      <div className="contenedor-princial">
+        {/* <Navbar /> */}
+        <div className="list-title">
+          <h1>Lista de campeones</h1>
+          <div className="input-list-container">
+            <img className="search-icon" src="/img/search.svg" alt="search" />
+            <input
+              placeholder="Buscar campeones"
+              onChange={handleChange}
+              type="text"
+            />
+          </div>
+        </div>
+        <div className="list">
+          <div className="container-error">
+            <span>{`No se encontró el campeón: ${textoBusqueda}`}</span>
+          </div>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div className="contenedor-princial">
+      {/* <Navbar /> */}
+      <div className="list-title">
+        <h1>Lista de campeones</h1>
+        <div className="input-list-container">
+          <img className="search-icon" src="/img/search.svg" alt="search" />
+          <input
+            placeholder="Buscar campeones"
+            onChange={handleChange}
+            type="text"
+          />
+        </div>
+      </div>
+      <div className="list">
+        {searchResult.map((campeon) => {
+          return (
+            <Link key={campeon.id} to={`/champions/${campeon.id}`}>
+              <ListItem
+                key={campeon.id}
+                id={campeon.id}
+                name={campeon.name}
+                title={campeon.title}
+              />
+            </Link>
+          );
+        })}
+      </div>
+    </div>
+  );
+};
 
 	if (loading) {
 		return (
@@ -206,4 +339,5 @@ const Lista = () => {
 	)
 }
 
-export default Lista
+
+export default Lista;
