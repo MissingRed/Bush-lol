@@ -22,7 +22,6 @@ const Builds = () => {
 
 	const traerBuilds = async (email) => {
 		const response = await axios.get(`builds/${email}`)
-		console.log(response.data)
 		setBuilds(response.data)
 	}
 
@@ -55,7 +54,12 @@ const Builds = () => {
 	return (
 		<div className="contenedor-princial">
 			{toggleModal ? (
-				<BuildsModal nueva close={() => setToggleModal(false)} />
+				<BuildsModal
+					email={email}
+					nueva
+					listaBuilds={(e) => setBuilds(e)}
+					close={() => setToggleModal(false)}
+				/>
 			) : null}
 			<div className="cabecera">
 				<h1>Builds</h1>
@@ -80,6 +84,8 @@ const Builds = () => {
 								key={build._id}
 								id={build._id}
 								eliminar={eliminarBuild}
+								nombre={build.nombre}
+								items={build.items}
 							/>
 						)
 					})}

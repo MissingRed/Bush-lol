@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const ItemComponent = ({ id, eliminar }) => {
+const ItemComponent = ({ id, eliminar, nombre, items }) => {
 	const [data, setData] = useState('')
 
 	useEffect(() => {
@@ -26,7 +26,7 @@ const ItemComponent = ({ id, eliminar }) => {
 				<div>
 					<div className="box">
 						<div className="header">
-							<h1>Fiora full AD</h1>
+							<h1>{nombre}</h1>
 							<div className="icons">
 								<img src="/img/edit.svg" alt="edit" />
 								<img
@@ -39,47 +39,47 @@ const ItemComponent = ({ id, eliminar }) => {
 						<div className="itemsAdd">
 							<div className="item1">
 								<img
-									src={`http://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/${data.data[3047].image.full}`}
+									src={`http://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/${items[0]}`}
 									alt=""
 								/>
 								<div>
-									<p>{data.data[3047].name}</p>
+									<p>{data.data[items[0].replace('.png', '')].name}</p>
 								</div>
 							</div>
 							<div className="item1">
 								<img
-									src={`http://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/${data.data[3074].image.full}`}
+									src={`http://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/${items[1]}`}
 									alt=""
 								/>
-								<p>{data.data[3074].name}</p>
+								<p>{data.data[items[1].replace('.png', '')].name}</p>
 							</div>
 							<div className="item1">
 								<img
-									src={`http://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/${data.data[3078].image.full}`}
+									src={`http://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/${items[2]}`}
 									alt=""
 								/>
-								<p>{data.data[3078].name}</p>
+								<p>{data.data[items[2].replace('.png', '')].name}</p>
 							</div>
 							<div className="item1">
 								<img
-									src={`http://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/${data.data[3046].image.full}`}
+									src={`http://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/${items[3]}`}
 									alt=""
 								/>
-								<p>{data.data[3046].name}</p>
+								<p>{data.data[items[3].replace('.png', '')].name}</p>
 							</div>
 							<div className="item1">
 								<img
-									src={`http://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/${data.data[3053].image.full}`}
+									src={`http://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/${items[4]}`}
 									alt=""
 								/>
-								<p>{data.data[3053].name}</p>
+								<p>{data.data[items[4].replace('.png', '')].name}</p>
 							</div>
 							<div className="item1">
 								<img
-									src={`http://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/${data.data[3026].image.full}`}
+									src={`http://ddragon.leagueoflegends.com/cdn/10.10.3216176/img/item/${items[5]}`}
 									alt=""
 								/>
-								<p>{data.data[3026].name}</p>
+								<p>{data.data[items[5].replace('.png', '')].name}</p>
 							</div>
 						</div>
 					</div>
