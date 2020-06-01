@@ -1,5 +1,3 @@
-
-import React, { useEffect } from "react";
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
@@ -15,23 +13,10 @@ const ListItem = (props) => {
 		EsFavorito ? EstrellaAmarilla : EstrellaBlanca
 	)
 
-
-  useEffect(() => {
-    const item = document.querySelector(`#${id}`);
-    item.style.backgroundImage = `url("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg")`;
-  }, []);
-
-  return (
-    <div id={`${id}`} className="list-item">
-      <div className="info-item">
-        <h2>{props.name}</h2>
-        <p>{props.title}</p>
-      </div>
-      <img src="/img/star.svg" alt="" />
-      <div className="color-item"></div>
-    </div>
-  );
-};
+	useEffect(() => {
+		const item = document.querySelector(`#${id}`)
+		item.style.backgroundImage = `url("http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${id}_0.jpg")`
+	}, [])
 
 	const toggleStar = async () => {
 		if (estrella === EstrellaAmarilla) {
@@ -72,5 +57,4 @@ const ListItem = (props) => {
 	)
 }
 
-
-export default ListItem;
+export default ListItem

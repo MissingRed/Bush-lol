@@ -220,7 +220,9 @@ nav a {
 	color: rgba(0, 0, 0, 0.8);
 }
 
-.login-register form input[type='email'], .login-register form input[type='password'], .login-register form input[type='text'] {
+.login-register form input[type='email'],
+.login-register form input[type='password'],
+.login-register form input[type='text'] {
 	width: calc(100% - 20px);
 	margin-bottom: 20px;
 	height: 50px;
@@ -365,7 +367,7 @@ img.error {
 
 .welcome-container {
 	width: 100%;
-	height: calc(100vh - 120px);
+	height: calc(90vh - 120px);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -457,7 +459,8 @@ img.error {
 	padding: 1em;
 }
 
-svg path, svg rect {
+svg path,
+svg rect {
 	fill: #9733ee;
 }
 
@@ -473,17 +476,17 @@ hr {
 	margin-bottom: 5vh;
 }
 
-.cabecera input[type="search"] {
+.cabecera input[type='search'] {
 	outline: none;
 	border: 0;
-	background-color: #EAEAEA;
+	background-color: #eaeaea;
 	border-radius: 50px;
 	width: 40%;
 	padding: 10px;
 	padding-left: 50px;
 }
 
-.cabecera input[type="search"]::-webkit-input-placeholder {
+.cabecera input[type='search']::-webkit-input-placeholder {
 	font-weight: 600;
 }
 
@@ -515,6 +518,13 @@ hr {
 	margin-bottom: 5vh;
 }
 
+.agregar button {
+	outline: none;
+	border: none;
+	cursor: pointer;
+	background-color: transparent;
+}
+
 .addBuild-btn:hover {
 	box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.25);
 }
@@ -523,11 +533,14 @@ hr {
 	display: grid;
 	grid-gap: 50px;
 	--auto-grid-min-size: 30rem;
-	grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+	grid-template-columns: repeat(
+		auto-fill,
+		minmax(var(--auto-grid-min-size), 1fr)
+	);
 }
 
 .box {
-	background: #F4F4F4;
+	background: #f4f4f4;
 	box-shadow: 0px 30px 40px rgba(0, 0, 0, 0.15);
 	border-radius: 15px;
 	padding: 45px;
@@ -549,6 +562,7 @@ hr {
 
 .icons img {
 	margin-left: 30px;
+	cursor: pointer;
 }
 
 .itemsAdd {
@@ -561,7 +575,7 @@ hr {
 	border-radius: 5px;
 	width: 3.1rem;
 	border: 3px solid black;
-	margin: .5rem;
+	margin: 0.5rem;
 	margin-bottom: 0;
 }
 
@@ -839,3 +853,152 @@ footer {
 	font-size: 4em;
 }
 
+.no-builds {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40vh;
+}
+
+.back-builds-modal {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(255, 255, 255, 0.5);
+	z-index: 50;
+	-webkit-backdrop-filter: saturate(180%) blur(10px);
+	backdrop-filter: saturate(180%) blur(10px);
+}
+.builds-modal {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 50vw;
+	height: 70vh;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 50;
+	-webkit-backdrop-filter: saturate(180%) blur(10px);
+	backdrop-filter: saturate(180%) blur(10px);
+	border-radius: 25px;
+	color: white;
+	padding: 50px;
+}
+
+.input-nombre-build {
+	margin-top: 20px;
+	height: 40px;
+	border: none;
+	outline: none;
+	background: transparent;
+	font-size: 2em;
+	color: white;
+}
+
+.buttons-modal {
+	display: flex;
+	margin-top: 40px;
+	width: 100%;
+	height: 15%;
+	justify-content: space-between;
+}
+
+.buttons-modal button {
+	height: 100%;
+	width: 10%;
+	border-radius: 15px;
+	border: none;
+	border: 2px solid white;
+	border-style: dashed;
+	background: transparent;
+	cursor: pointer;
+}
+
+.items-modal {
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	height: 35%;
+	overflow: scroll;
+	margin-top: 40px;
+}
+
+.items-modal img {
+	width: 60px;
+	height: 60px;
+	border-radius: 10px;
+	pointer-events: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}
+.items-modal button {
+	margin: 5px 13px 13px 13px;
+	width: 60px;
+	height: 60px;
+	border-radius: 10px;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+
+.items-modal div {
+	width: 100%;
+	text-align: center;
+}
+
+.items-modal::-webkit-scrollbar {
+	width: 10px;
+	margin-right: 15px;
+	background: transparent;
+}
+
+.items-modal::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.items-modal::-webkit-scrollbar-corner {
+	background: transparent;
+}
+
+.items-modal::-webkit-scrollbar-thumb {
+	background: linear-gradient(180deg, #da22ff 0%, #9733ee 100%);
+	border-radius: 5px;
+}
+
+.input-modal {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+}
+
+.input-modal input {
+	height: 50px;
+	font-size: 1.5em;
+	background: rgb(112, 112, 112, 0.5);
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	color: white;
+	padding-left: 20px;
+	width: 50%;
+}
+
+.btn-modal-builds {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.btn-modal-builds button {
+	outline: none;
+	cursor: pointer;
+	border: none;
+}
