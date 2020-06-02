@@ -10,6 +10,14 @@ const Builds = () => {
 	const [builds, setBuilds] = useState([])
 	const [email, setEmail] = useState('')
 	const [toggleModal, setToggleModal] = useState(false)
+	const [toggleModalEditar, setToggleModalEditar] = useState(false)
+
+	const [nombreEditar, setNombreEditar] = useState('')
+	const [buildEditar, setBuildEditar] = useState('')
+	const [idEditar, setIdEditar] = useState('')
+
+	const [textoBusqueda, setTextoBusqueda] = useState('')
+	const [searchResult, setSearchResult] = useState([])
 
 	useEffect(() => {
 		if (localStorage.usertoken) {
@@ -25,10 +33,20 @@ const Builds = () => {
 		setBuilds(response.data)
 	}
 
-	const eliminarBuild = (id) => {
+	const handleChange = (e) => {
+		const texto = e.target.value
+		setTextoBusqueda(texto)
+
+		const search = builds.filter((build) => {
+			return `${build.nombre}`.toLowerCase().includes(texto.toLowerCase())
+		})
+
+		setSearchResult(search)
+	}
+
+	const eliminarBuild = (id, nombre) => {
 		Swal.fire({
-			title: 'Are you sure?',
-			text: "You won't be able to revert this!",
+			title: `¿Estas seguro que quieres eliminar la build?`,
 			icon: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#00d2ff ',
@@ -39,9 +57,16 @@ const Builds = () => {
 			if (result.value) {
 				const response = await axios.delete(`builds/${id}/${email}`)
 				setBuilds(response.data)
-				Swal.fire('Deleted!', 'Your file has been deleted.', 'success')
+				Swal.fire('Eliminada', 'La build se elimino correctamente.', 'success')
 			}
 		})
+	}
+
+	const EditarBuild = (nombre, build, id) => {
+		setNombreEditar(nombre)
+		setBuildEditar(build)
+		setIdEditar(id)
+		setToggleModalEditar(true)
 	}
 
 	if (!localStorage.usertoken) {
@@ -61,11 +86,27 @@ const Builds = () => {
 					close={() => setToggleModal(false)}
 				/>
 			) : null}
-			<div className="cabecera">
+			{toggleModalEditar ? (
+				<BuildsModal
+					email={email}
+					listaBuilds={(e) => setBuilds(e)}
+					nombre={nombreEditar}
+					build={buildEditar}
+					id={idEditar}
+					close={() => setToggleModalEditar(false)}
+				/>
+			) : null}
+			<div className="list-title">
 				<h1>Builds</h1>
-				<input type="search" name="Buscar" placeholder="Buscar Campeones" />
+				<div className="input-list-container">
+					<img className="search-icon" src="/img/search.svg" alt="search" />
+					<input
+						placeholder="Buscar builds"
+						onChange={handleChange}
+						type="text"
+					/>
+				</div>
 			</div>
-			<hr />
 			<div className="agregar">
 				<button className="addBuild-btn" onClick={() => setToggleModal(true)}>
 					Agregar nueva Build
@@ -77,18 +118,44 @@ const Builds = () => {
 					<h1>Aun no tienes builds</h1>
 				</div>
 			) : (
-				<div className="grid">
-					{builds.map((build) => {
-						return (
-							<ItemsComponent
-								key={build._id}
-								id={build._id}
-								eliminar={eliminarBuild}
-								nombre={build.nombre}
-								items={build.items}
-							/>
-						)
-					})}
+				<div>
+					{!textoBusqueda ? (
+						<div className="grid">
+							{builds.map((build) => {
+								return (
+									<ItemsComponent
+										key={build._id}
+										id={build._id}
+										editar={EditarBuild}
+										eliminar={eliminarBuild}
+										nombre={build.nombre}
+										items={build.items}
+									/>
+								)
+							})}
+						</div>
+					) : null}
+					{!searchResult.length && textoBusqueda ? (
+						<div className="no-builds">
+							<h1>{`No se encontró la build: ${textoBusqueda}`}</h1>
+						</div>
+					) : null}
+					{searchResult.length && textoBusqueda ? (
+						<div className="grid">
+							{searchResult.map((build) => {
+								return (
+									<ItemsComponent
+										key={build._id}
+										id={build._id}
+										editar={EditarBuild}
+										eliminar={eliminarBuild}
+										nombre={build.nombre}
+										items={build.items}
+									/>
+								)
+							})}
+						</div>
+					) : null}
 				</div>
 			)}
 		</div>

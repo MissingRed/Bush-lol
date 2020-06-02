@@ -174,6 +174,46 @@ const Favoritos = () => {
 		)
 	}
 
+	if (data.length === 0) {
+		return (
+			<div className="contenedor-princial">
+				<div className="list-title">
+					<div className="perfil-favoritos">
+						<img
+							className="foto-perfil-favoritos"
+							src="img/foto-perfil.png"
+							alt=""
+						/>
+						<div>
+							<h1>{name}</h1>
+							<span>
+								{listaFavoritos.length === 1
+									? `${listaFavoritos.length} campeon favorito`
+									: `${listaFavoritos.length} campeones favoritos`}
+							</span>
+						</div>
+					</div>
+					<div className="input-list-container">
+						<img className="search-icon" src="/img/search.svg" alt="search" />
+						<input
+							placeholder="Buscar campeones"
+							onChange={handleChange}
+							type="text"
+						/>
+					</div>
+				</div>
+				<div className="list">
+					<div className="title-favorites">
+						<h1>Favoritos</h1>
+					</div>
+					<div className="no-builds">
+						<h1>Aun no tienes campeones favoritos</h1>
+					</div>
+				</div>
+			</div>
+		)
+	}
+
 	if (!textoBusqueda) {
 		return (
 			<div className="contenedor-princial">
@@ -209,6 +249,7 @@ const Favoritos = () => {
 					{data.map((campeon) => {
 						return (
 							<ListItem
+								arrayFavoritos={() => TraerFavoritos(email)}
 								key={campeon.id}
 								id={campeon.id}
 								name={campeon.name}
@@ -295,6 +336,7 @@ const Favoritos = () => {
 				{searchResult.map((campeon) => {
 					return (
 						<ListItem
+							arrayFavoritos={() => TraerFavoritos(email)}
 							key={campeon.id}
 							id={campeon.id}
 							name={campeon.name}

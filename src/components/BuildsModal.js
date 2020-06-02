@@ -2,7 +2,15 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
-const BuildsModal = ({ close, nueva, email, listaBuilds }) => {
+const BuildsModal = ({
+	close,
+	nueva,
+	email,
+	listaBuilds,
+	nombre,
+	build,
+	id,
+}) => {
 	const [data, setData] = useState([])
 	const [textoBusqueda, setTextoBusqueda] = useState('')
 	const [searchResult, setSearchResult] = useState([])
@@ -11,6 +19,10 @@ const BuildsModal = ({ close, nueva, email, listaBuilds }) => {
 	const [nombreBuild, setNombreBuild] = useState('')
 
 	useEffect(() => {
+		if (nombre && build && id) {
+			setBuild(build)
+			setNombreBuild(nombre)
+		}
 		fetchData()
 	}, [])
 
@@ -21,7 +33,6 @@ const BuildsModal = ({ close, nueva, email, listaBuilds }) => {
 					'http://ddragon.leagueoflegends.com/cdn/10.10.3216176/data/es_MX/item.json'
 				)
 				.then((res) => {
-					console.log(Object.values(res.data.data))
 					setData(Object.values(res.data.data))
 				})
 		} catch (error) {}
@@ -61,6 +72,35 @@ const BuildsModal = ({ close, nueva, email, listaBuilds }) => {
 				items: Build,
 			})
 			listaBuilds(response.data)
+			close()
+		} else {
+			Swal.fire({
+				position: 'center',
+				icon: 'info',
+				title: 'Por favor ingresa todos lo campos',
+				showConfirmButton: false,
+				timer: 1500,
+			})
+		}
+	}
+
+	const EditarBuild = async () => {
+		let Falta = 0
+		for (let i = 0; i < Build.length; i++) {
+			if (Build[i] === null) {
+				Falta++
+			}
+		}
+
+		if (Falta === 0 && nombreBuild) {
+			const response = await axios.put('builds/', {
+				id: id,
+				nombre: nombreBuild,
+				items: Build,
+				emailUsuario: email,
+			})
+			listaBuilds(response.data)
+			close()
 		} else {
 			Swal.fire({
 				position: 'center',
@@ -81,6 +121,7 @@ const BuildsModal = ({ close, nueva, email, listaBuilds }) => {
 					className="input-nombre-build"
 					type="text"
 					maxLength="30"
+					value={nombreBuild}
 					placeholder="Nombre de la build..."
 					onChange={(e) => setNombreBuild(e.target.value)}
 				/>
@@ -239,7 +280,7 @@ const BuildsModal = ({ close, nueva, email, listaBuilds }) => {
 					<button
 						className="welcome-btn"
 						onClick={() => {
-							nueva ? GuardarBuild() : GuardarBuild()
+							nueva ? GuardarBuild() : EditarBuild()
 						}}
 					>
 						{nueva ? 'Guardar' : 'Actualizar'}

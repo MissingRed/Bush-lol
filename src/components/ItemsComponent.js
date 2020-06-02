@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const ItemComponent = ({ id, eliminar, nombre, items }) => {
+const ItemComponent = ({ id, eliminar, nombre, items, editar }) => {
 	const [data, setData] = useState('')
 
 	useEffect(() => {
@@ -28,10 +28,14 @@ const ItemComponent = ({ id, eliminar, nombre, items }) => {
 						<div className="header">
 							<h1>{nombre}</h1>
 							<div className="icons">
-								<img src="/img/edit.svg" alt="edit" />
+								<img
+									src="/img/edit.svg"
+									onClick={() => editar(nombre, items, id)}
+									alt="edit"
+								/>
 								<img
 									src="/img/trash-2.svg"
-									onClick={() => eliminar(id)}
+									onClick={() => eliminar(id, nombre)}
 									alt="eliminar"
 								/>
 							</div>

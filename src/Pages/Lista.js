@@ -46,7 +46,7 @@ const Lista = () => {
 						)
 						.then((res) => {
 							setData(Object.values(res.data.data))
-							// console.log(Object.values(res.data.data))
+							console.log(Object.values(res.data.data))
 						})
 						.catch((err) => {
 							setError(err)

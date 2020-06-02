@@ -25,6 +25,7 @@ const ListItem = (props) => {
 				email: props.email,
 				eliminar: id,
 			})
+			props.arrayFavoritos()
 		} else {
 			setEstrella(EstrellaAmarilla)
 			await axios.post('users/favoritos/', {

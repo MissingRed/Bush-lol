@@ -57,7 +57,7 @@ nav a {
 
 .nav-container {
 	display: flex;
-	width: 70%;
+	width: 50%;
 	align-items: center;
 	justify-content: space-between;
 }
@@ -515,7 +515,7 @@ hr {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-bottom: 5vh;
+	margin: 5vh 0;
 }
 
 .agregar button {
@@ -537,6 +537,7 @@ hr {
 		auto-fill,
 		minmax(var(--auto-grid-min-size), 1fr)
 	);
+	padding-bottom: 100px;
 }
 
 .box {

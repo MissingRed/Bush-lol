@@ -32,12 +32,9 @@ const Navbar = (props) => {
 		setcerrarSesion(true)
 	}
 
-	if (cerrarSesion) {
-		return <Redirect to="/" />
-	}
-
 	return (
 		<nav>
+			{cerrarSesion ? <Redirect to="/" /> : null}
 			{toggleModal ? <Idioma close={() => setToggleModal(false)} /> : null}
 			<Link to="/">
 				<img className="logo" src="/img/logo.png" alt="Logo" />
