@@ -93,7 +93,17 @@ const Campeones = (props) => {
 					<div className="skills">
 						<h2>{`${habilidadActual[0]}: ${habilidadActual[1]}`}</h2>
 
-						<p>{habilidadActual[2]}</p>
+						<p>
+							{habilidadActual[2]}{' '}
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								href="https://euw.leagueoflegends.com/es-es/champions/"
+								className="leer-mas"
+							>
+								Leer más.
+							</a>
+						</p>
 						<div className="imgs">
 							<motion.img
 								whileHover={{ scale: 1.1 }}
