@@ -88,9 +88,7 @@ const ItemComponent = ({ id, eliminar, nombre, items, editar }) => {
 						</div>
 					</div>
 				</div>
-			) : (
-				<strong>Loading..</strong>
-			)}
+			) : null}
 		</div>
 	)
 }

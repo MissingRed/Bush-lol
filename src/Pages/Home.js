@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import BarraBusqueda from '../components/BarraBusqueda'
 
 const Home = () => {
+	const [toggleModal, setToggleModal] = useState(false)
+
 	return (
 		<div>
+			{toggleModal ? (
+				<BarraBusqueda close={() => setToggleModal(false)} />
+			) : null}
 			<div className="contenedor-princial">
 				<div className="hero">
 					<motion.div
@@ -17,9 +23,9 @@ const Home = () => {
 							Aprende las habilidades de tus campeones favoritos <br /> ¡Empieza
 							a buscar ya!
 						</h1>
-						<div className="input-hero">
+						<div className="input-hero" onClick={() => setToggleModal(true)}>
 							<img className="search-icon" src="/img/search.svg" alt="search" />
-							<input placeholder="Buscar campeones" type="text" />
+							<input placeholder="Buscar campeones" type="text" disabled />
 						</div>
 						<img className="hero-line" src="/img/line.png" alt="" />
 					</motion.div>

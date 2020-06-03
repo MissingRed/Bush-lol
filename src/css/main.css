@@ -748,6 +748,7 @@ hr {
 	padding-left: 60px;
 	font-size: 1.5em;
 	outline: none;
+	cursor: pointer;
 }
 
 .hero-line {
